@@ -71,4 +71,5 @@ extern "C" void load()
 {
     INSTALL_HOOK_OFFSETLESS(StretchableObstacle_SetSizeAndColor, il2cpp_utils::FindMethodUnsafe("", "StretchableObstacle", "SetSizeAndColor", 4));
     INSTALL_HOOK_OFFSETLESS(ObstacleSaberSparkleEffect_StartEmission, il2cpp_utils::FindMethodUnsafe("", "ObstacleSaberSparkleEffect", "StartEmission", 0));
+    INSTALL_HOOK_OFFSETLESS(NoteCutParticlesEffect_SpawnParticles, il2cpp_utils::FindMethodUnsafe("", "NoteCutParticlesEffect", "SpawnParticles", 9));
 }
