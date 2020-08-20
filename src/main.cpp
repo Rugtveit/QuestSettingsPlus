@@ -3,6 +3,11 @@
 #include "codegen/UnityEngine/Transform.hpp"
 #include "codegen/UnityEngine/GameObject.hpp"
 #include "codegen/GlobalNamespace/ParametricBoxFakeGlowController.hpp"
+#include "codegen/UnityEngine/Color32.hpp"
+#include "codegen/UnityEngine/ParticleSystem.hpp"
+#include "codegen/GlobalNamespace/NoteCutParticlesEffect.hpp"
+#include "codegen/UnityEngine/ParticleSystem_MainModule.hpp"
+#include "codegen/UnityEngine/Mathf.hpp"
 
 static ModInfo modInfo;
 
@@ -10,9 +15,13 @@ const Logger& getLogger() {
   static const Logger& logger(modInfo);
   return logger;
 }
-
+//Config
 bool transparentWalls = true; 
 bool fakeGlowOnWalls = false; 
+bool obstacleSaberSparke = false; 
+
+float slashParticleMultiplier = 0.5f;
+float explosionParticleMultiplier = 3.0f;
 
 MAKE_HOOK_OFFSETLESS(StretchableObstacle_SetSizeAndColor, void, GlobalNamespace::StretchableObstacle* self, float width, float height, float length, UnityEngine::Color color)
 {
@@ -36,6 +45,18 @@ MAKE_HOOK_OFFSETLESS(StretchableObstacle_SetSizeAndColor, void, GlobalNamespace:
     StretchableObstacle_SetSizeAndColor(self, width, height, length, color);
 }
 
+MAKE_HOOK_OFFSETLESS(ObstacleSaberSparkleEffect_StartEmission, void, Il2CppObject* self)
+{
+    if(obstacleSaberSparke) ObstacleSaberSparkleEffect_StartEmission(self);
+}
+
+MAKE_HOOK_OFFSETLESS(NoteCutParticlesEffect_SpawnParticles, void, GlobalNamespace::NoteCutParticlesEffect* self, Vector3 pos, Vector3 cutNormal, Vector3 saberDir, 
+                    Vector3 moveVec, UnityEngine::Color32 color, int sparkleParticlesCount, int explosionParticlesCount, float lifeTimeMultiplier, int saberType)
+{
+    sparkleParticlesCount = UnityEngine::Mathf::FloorToInt(sparkleParticlesCount * slashParticleMultiplier); 
+    explosionParticlesCount = UnityEngine::Mathf::FloorToInt(sparkleParticlesCount * explosionParticleMultiplier); 
+    NoteCutParticlesEffect_SpawnParticles(self, pos, cutNormal, saberDir, moveVec, color, sparkleParticlesCount, explosionParticlesCount, lifeTimeMultiplier, saberType);
+}
 
 extern "C" void setup(ModInfo& info) 
 {
@@ -49,4 +70,5 @@ extern "C" void setup(ModInfo& info)
 extern "C" void load() 
 {
     INSTALL_HOOK_OFFSETLESS(StretchableObstacle_SetSizeAndColor, il2cpp_utils::FindMethodUnsafe("", "StretchableObstacle", "SetSizeAndColor", 4));
+    INSTALL_HOOK_OFFSETLESS(ObstacleSaberSparkleEffect_StartEmission, il2cpp_utils::FindMethodUnsafe("", "ObstacleSaberSparkleEffect", "StartEmission", 0));
 }
