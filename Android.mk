@@ -39,7 +39,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := il2cpp-codegen_0_1_6
 LOCAL_EXPORT_C_INCLUDES := extern/codegen
 LOCAL_CPP_FEATURES := rtti exceptions
-LOCAL_SRC_FILES := extern/libil2cpp_codegen.so
+LOCAL_SRC_FILES := extern/libil2cpp_codegen_0_1_6.so
 LOCAL_EXPORT_C_FLAGS := -Wno-inaccessible-base
 include $(PREBUILT_SHARED_LIBRARY)
 
@@ -51,7 +51,7 @@ LOCAL_MODULE := qsettingsplus
 LOCAL_SRC_FILES += $(call rwildcard,src/,*.cpp)
 LOCAL_SRC_FILES += $(call rwildcard,extern/beatsaber-hook/src/inline-hook,*.cpp)
 LOCAL_SRC_FILES += $(call rwildcard,extern/beatsaber-hook/src/inline-hook,*.c)
-LOCAL_SHARED_LIBRARIES := modloader beatsaber-hook il2cpp-codegen
+LOCAL_SHARED_LIBRARIES := modloader beatsaber-hook_0_4_4 il2cpp-codegen_0_1_6
 LOCAL_LDLIBS += -llog
 LOCAL_CFLAGS += -I'extern/libil2cpp/il2cpp/libil2cpp/' -isystem 'extern' -'extern/codegen'
 LOCAL_C_INCLUDES += ./include ./src
