@@ -17,22 +17,22 @@ bool fakeGlowOnWalls = false;
 MAKE_HOOK_OFFSETLESS(StretchableObstacle_SetSizeAndColor, void, GlobalNamespace::StretchableObstacle* self, float width, float height, float length, UnityEngine::Color color)
 {
     auto* obstacleCore = self->obstacleCore; 
-    getLogger().info("obstacleCore: %p", obstacleCore);
+    //getLogger().info("obstacleCore: %p", obstacleCore);
 
     auto obstacleCoreGO = obstacleCore->get_gameObject();
-    getLogger().info("obstacleCoreGO: %p", obstacleCoreGO);
+    //getLogger().info("obstacleCoreGO: %p", obstacleCoreGO);
 
     obstacleCoreGO->SetActive(!transparentWalls);
 
     auto obstacleFakeGlow = self->obstacleFakeGlow;
-    getLogger().info("obstacleFakeGlow: %p", obstacleFakeGlow);
+    //getLogger().info("obstacleFakeGlow: %p", obstacleFakeGlow);
 
     auto obstacleFakeGlowGO = obstacleFakeGlow->get_gameObject();
-    getLogger().info("obstacleFakeGlowGO: %p", obstacleFakeGlowGO);
+    //getLogger().info("obstacleFakeGlowGO: %p", obstacleFakeGlowGO);
 
     obstacleFakeGlowGO->SetActive(fakeGlowOnWalls);
 
-    getLogger().info("Done setting fakeGlow to %d and transparentWalls to %d", fakeGlowOnWalls, transparentWalls);
+    //getLogger().info("Done setting fakeGlow to %d and transparentWalls to %d", fakeGlowOnWalls, transparentWalls);
     StretchableObstacle_SetSizeAndColor(self, width, height, length, color);
 }
 
