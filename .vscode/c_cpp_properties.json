@@ -1,0 +1,27 @@
+{
+    "configurations": [
+      {
+        "defines": [
+          "MOD_ID=\"QuestSettingsPlus\"",
+          "VERSION=\"1.0.0\"",
+          "__GNUC__",
+          "__aarch64__",
+          "ID=\"QuestSettingsPlus\""
+        ],
+        "includePath": [
+          "${workspaceFolder}/**",
+          "C:/Users/Rug/Documents/Development/Quest/Mods/QuestSettingsPlus/extern/libil2cpp",
+          "C:/Users/Rug/Documents/Development/Quest/Utilities/android-ndk-r21d",
+          "C:/Users/Rug/Documents/Development/Quest/Utilities/android-ndk-r21d/**",
+          "${workspaceFolder}/shared",
+          "${workspaceFolder}/extern",
+          "${workspaceFolder}/extern"
+        ],
+        "name": "Quest",
+        "cStandard": "c11",
+        "cppStandard": "c++20",
+        "intelliSenseMode": "clang-arm64"
+      }
+    ],
+    "version": 4
+  }

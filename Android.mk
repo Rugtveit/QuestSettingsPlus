@@ -28,32 +28,38 @@ include $(PREBUILT_SHARED_LIBRARY)
 
 # Creating prebuilt for dependency: beatsaber-hook - version: 0.4.4
 include $(CLEAR_VARS)
-LOCAL_MODULE := beatsaber-hook_0_4_4
+LOCAL_MODULE := beatsaber-hook_0_6_0
 LOCAL_EXPORT_C_INCLUDES := extern/beatsaber-hook
-LOCAL_SRC_FILES := extern/libbeatsaber-hook_0_4_4.so
+LOCAL_SRC_FILES := extern/libbeatsaber-hook_0_6_0.so
 LOCAL_EXPORT_C_FLAGS := -DNEED_UNSAFE_CSHARP
 include $(PREBUILT_SHARED_LIBRARY)
 
-# Creating prebuilt for dependency: il2cpp-codegen - version: 0.4.4
+# Creating prebuilt for dependency: codegen - version: 0.2.4
 include $(CLEAR_VARS)
-LOCAL_MODULE := il2cpp-codegen_0_1_6
+LOCAL_MODULE := codegen_0_2_4
 LOCAL_EXPORT_C_INCLUDES := extern/codegen
-LOCAL_CPP_FEATURES := rtti exceptions
-LOCAL_SRC_FILES := extern/libil2cpp_codegen_0_1_6.so
-LOCAL_EXPORT_C_FLAGS := -Wno-inaccessible-base
+LOCAL_SRC_FILES := extern/libcodegen_0_2_4.so
+include $(PREBUILT_SHARED_LIBRARY)
+# Creating prebuilt for dependency: bs-utils - version: 0.4.2
+include $(CLEAR_VARS)
+LOCAL_MODULE := bs-utils
+LOCAL_EXPORT_C_INCLUDES := extern/bs-utils
+LOCAL_SRC_FILES := extern/libbs-utils.so
 include $(PREBUILT_SHARED_LIBRARY)
 
 # If you would like to use more shared libraries (such as custom UI, utils, or more) add them here, following the format above.
 # In addition, ensure that you add them to the shared library build below.
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := qsettingsplus
+LOCAL_MODULE := QuestSettingsPlus_1_0_0
 LOCAL_SRC_FILES += $(call rwildcard,src/,*.cpp)
 LOCAL_SRC_FILES += $(call rwildcard,extern/beatsaber-hook/src/inline-hook,*.cpp)
 LOCAL_SRC_FILES += $(call rwildcard,extern/beatsaber-hook/src/inline-hook,*.c)
-LOCAL_SHARED_LIBRARIES := modloader beatsaber-hook_0_4_4 il2cpp-codegen_0_1_6
+LOCAL_SHARED_LIBRARIES += modloader
+LOCAL_SHARED_LIBRARIES += beatsaber-hook_0_6_0
+LOCAL_SHARED_LIBRARIES += codegen_0_2_4
+LOCAL_SHARED_LIBRARIES += bs-utils
 LOCAL_LDLIBS += -llog
-LOCAL_CFLAGS += -I'extern/libil2cpp/il2cpp/libil2cpp/' -isystem 'extern' -'extern/codegen'
+LOCAL_CFLAGS += -I'extern/libil2cpp/il2cpp/libil2cpp/' -isystem 'extern' -'extern/codegen' -DID='"QuestSettingsPlus"' -DVERSION='"1.0.0"' -I'./shared' -I'./extern' -I'./extern/codegen/include'
 LOCAL_C_INCLUDES += ./include ./src
-LOCAL_LDLIBS := -llog
 include $(BUILD_SHARED_LIBRARY)

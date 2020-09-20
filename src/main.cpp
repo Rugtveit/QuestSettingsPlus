@@ -1,18 +1,6 @@
 //#include <unordered_set>
 #include  "include/main.hpp"
-#include "codegen/UnityEngine/Transform.hpp"
-#include "codegen/UnityEngine/GameObject.hpp"
-#include "codegen/GlobalNamespace/ParametricBoxFakeGlowController.hpp"
-#include "codegen/UnityEngine/Color32.hpp"
-#include "codegen/UnityEngine/ParticleSystem.hpp"
-#include "codegen/GlobalNamespace/NoteCutParticlesEffect.hpp"
-#include "codegen/UnityEngine/ParticleSystem_MainModule.hpp"
-#include "codegen/UnityEngine/Mathf.hpp"
-#include "codegen/GlobalNamespace/SetSaberFakeGlowColor.hpp"
-#include "codegen/GlobalNamespace/Parametric3SliceSpriteController.hpp"
-#include "codegen/GlobalNamespace/ParametricBoxFrameController.hpp"
-#include "codegen/UnityEngine/MeshRenderer.hpp"
-#include "codegen/UnityEngine/Material.hpp"
+
 
 static ModInfo modInfo;
 

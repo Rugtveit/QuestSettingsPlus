@@ -48,3 +48,10 @@ ndkpath.txt
 # Other files
 extern/
 AAndroid.mk.backup
+
+qpm.shared.json
+extern/
+*.backup
+
+
+
