@@ -1,0 +1,45 @@
+{
+    "id": "QuestSettingsPlus",
+    "name": "QuestSettings+",
+    "author": "Rugtveit",
+    "description": [
+        
+        "I'm lazy",
+        
+        "I will fix this later I promise."
+        
+    ],
+    "category": "Gameplay",
+    "gameVersion": "1.11.1",
+    "version": "1.0.0",
+    "platform": "Quest",
+    "components": [
+        {
+            "type": "HookMod",
+            "installAction": {
+                "installLibraryFile": "libQuestSettingsPlus.so"
+            },
+            "uninstallAction": {
+                "removeLibraryFile": "libQuestSettingsPlus.so"
+            }
+        },
+        {
+            "type": "HookModLibrary",
+            "installAction": {
+                "installLibraryFile": "libbeatsaber-hook_0_6_0.so"
+            }
+        },
+        {
+            "type": "HookModLibrary",
+            "installAction": {
+                "installLibraryFile": "libcodegen_0_2_4.so"
+            }
+        },
+        {
+            "type": "HookModLibrary",
+            "installAction": {
+                "installLibraryFile": "libbs-utils.so"
+            }
+        }
+    ]
+}
