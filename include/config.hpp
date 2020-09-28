@@ -20,14 +20,14 @@ class ModConfig
 
         static struct Config_t
         {
-            bool    transparentWalls            = true; 
-            bool    obstacleSaberSparkle        = false; 
-            bool    saberClash                  = false;
-            bool    fakeGlowOnWalls             = false; 
-            bool    fakeGlowOnSabers            = false; 
-            bool    rainbowParticles            = true;
-            float   slashParticleMultiplier     = 5.0f;
-            float   explosionParticleMultiplier = 5.0f;
+            bool    transparentWalls            = false; 
+            bool    obstacleSaberSparkle        = true; 
+            bool    saberClash                  = true;
+            bool    fakeGlowOnWalls             = true; 
+            bool    fakeGlowOnSabers            = true; 
+            bool    rainbowParticles            = false;
+            float   slashParticleMultiplier     = 1.0f;
+            float   explosionParticleMultiplier = 1.0f;
         } Config;
 
         static void saveConfig();
