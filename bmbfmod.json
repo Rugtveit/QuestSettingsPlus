@@ -3,10 +3,8 @@
     "name": "QuestSettings+",
     "author": "Rugtveit",
     "description": [
-        
-        "I'm lazy",
-        
-        "I will fix this later I promise."
+	"QuestSettingsPlus!",
+	"Now with Rainbow Particles!"
         
     ],
     "category": "Gameplay",
@@ -26,13 +24,13 @@
         {
             "type": "HookModLibrary",
             "installAction": {
-                "installLibraryFile": "libbeatsaber-hook_0_6_0.so"
+                "installLibraryFile": "libbeatsaber-hook_0_7_1.so"
             }
         },
         {
             "type": "HookModLibrary",
             "installAction": {
-                "installLibraryFile": "libcodegen_0_2_4.so"
+                "installLibraryFile": "libcodegen_0_2_6.so"
             }
         },
         {

@@ -14,9 +14,6 @@ class ModConfig
             return config;
         }
 
-        static bool hasBool(bool &hasMember, std::string memberName);
-        static float hasFloat(bool &hasMember, std::string memberName);
-       
 
         static struct Config_t
         {

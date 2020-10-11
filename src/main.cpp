@@ -48,12 +48,7 @@ MAKE_HOOK_OFFSETLESS(StretchableObstacle_SetSizeAndColor, void, GlobalNamespace:
         auto obstacleCoreGO = obstacleCore->get_gameObject();
         getLogger().info("obstacleCoreGO: %p", obstacleCoreGO);
         obstacleCoreGO->SetActive(false);
-        if(!scoreSubmissionDisabled)
-        {
-            scoreSubmissionDisabled = true;
-            bs_utils::Submission::disable(ModConfig::modInfo);
-            getLogger().info("Disabled score submission - QSettingsPlus");
-        }
+
     }
     // Disabling fake glow on walls
     // Get the obstacle fake glow from self (instance)
@@ -99,7 +94,7 @@ MAKE_HOOK_OFFSETLESS(NoteCutParticlesEffect_SpawnParticles, void, GlobalNamespac
     // Disabling scoresubmission if particle count is over the treshold of lagging the game.
     // This lag can give users a big advantage since the game can accidently calculate the cut of a note twice
     if(scoreSubmissionDisabled) return;
-    if(ModConfig::Config.slashParticleMultiplier >= 10.0f || ModConfig::Config.explosionParticleMultiplier >= 10.0f)
+    if(ModConfig::Config.slashParticleMultiplier > 10.0f || ModConfig::Config.explosionParticleMultiplier > 10.0f)
     {
         scoreSubmissionDisabled = true;
         bs_utils::Submission::disable(ModConfig::modInfo);
