@@ -34,7 +34,9 @@ bool ModConfig::loadConfig()
     if(auto SC = getBool(configDoc, "SaberClash")) Config.saberClash = *SC; else return false;
     if(auto RP = getBool(configDoc, "RainbowParticles")) Config.rainbowParticles = *RP; else return false;
     if(auto SPM = getFloat(configDoc, "SlashParticleMultiplier")) Config.slashParticleMultiplier = *SPM; else return false;
+    if(auto SPL = getFloat(configDoc, "SlashParticleLifetime")) Config.slashParticleLifetime = *SPL; else return false;
     if(auto EPM = getFloat(configDoc, "ExplosionParticleMultiplier")) Config.explosionParticleMultiplier = *EPM; else return false;
+    if(auto EPL = getFloat(configDoc, "ExplosionParticleLifetime")) Config.explosionParticleLifetime = *EPL; else return false;
 	return true;
 
 };
@@ -52,7 +54,9 @@ void ModConfig::saveConfig()
     configDoc.AddMember("SaberClash", Config.saberClash, allocator);
     configDoc.AddMember("RainbowParticles", Config.rainbowParticles, allocator);
 	configDoc.AddMember("SlashParticleMultiplier", Config.slashParticleMultiplier, allocator);
+    configDoc.AddMember("SlashParticleLifetime", Config.slashParticleLifetime, allocator);
     configDoc.AddMember("ExplosionParticleMultiplier", Config.explosionParticleMultiplier, allocator);
+    configDoc.AddMember("ExplosionParticleLifetime", Config.explosionParticleLifetime, allocator);
 	getConfig().Write();
 }
 

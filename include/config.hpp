@@ -24,7 +24,9 @@ class ModConfig
             bool    fakeGlowOnSabers            = true; 
             bool    rainbowParticles            = false;
             float   slashParticleMultiplier     = 1.0f;
+            float   slashParticleLifetime       = 1.0f;
             float   explosionParticleMultiplier = 1.0f;
+            float   explosionParticleLifetime   = 1.0f;
         } Config;
 
         static void saveConfig();
