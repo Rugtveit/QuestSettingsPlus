@@ -78,6 +78,17 @@ MAKE_HOOK_OFFSETLESS(ObstacleSaberSparkleEffectManager_Update, void, Il2CppObjec
     if(ModConfig::Config.obstacleSaberSparkle) ObstacleSaberSparkleEffectManager_Update(self);
 }
 
+void SetMaxParticlesAndLifetime(Il2CppObject* particleSystem, float multiplier)
+{
+    if (!particleSystem) return; 
+    Il2CppObject* particleModule = RET_V_UNLESS(il2cpp_utils::GetPropertyValue(particleSystem, "main"));
+    RET_V_UNLESS(il2cpp_utils::SetPropertyValue(particleModule, "maxParticles", INT_MAX));
+    RET_V_UNLESS(il2cpp_utils::SetPropertyValue(particleModule, "startLifetimeMultiplier", multiplier));
+}
+
+
+
+
 MAKE_HOOK_OFFSETLESS(NoteCutParticlesEffect_SpawnParticles, void, Il2CppObject* self, Vector3 pos, Vector3 cutNormal, Vector3 saberDir, 
                     Vector3 moveVec, Il2CppObject* color, int sparkleParticlesCount, int explosionParticlesCount, float lifeTimeMultiplier)
 {
@@ -87,11 +98,11 @@ MAKE_HOOK_OFFSETLESS(NoteCutParticlesEffect_SpawnParticles, void, Il2CppObject* 
     sparkleParticlesCount = (int)std::floor(sparkleParticlesCount * ModConfig::Config.slashParticleMultiplier); 
     explosionParticlesCount = (int)std::floor(sparkleParticlesCount * ModConfig::Config.explosionParticleMultiplier); 
 
-    Il2CppObject* sparkleModule = RET_V_UNLESS(il2cpp_utils::GetFieldValue(self, "_sparklesPSMainModule"));
-    RET_V_UNLESS(il2cpp_utils::SetPropertyValue(sparkleModule, "maxParticles", INT_MAX));
+    Il2CppObject* sparklePS = RET_V_UNLESS(il2cpp_utils::GetFieldValue(self, "_sparklesPS"));
+    SetMaxParticlesAndLifetime(sparklePS, ModConfig::Config.slashParticleMultiplier);
 
-    Il2CppObject* sparkleModule = RET_V_UNLESS(il2cpp_utils::GetFieldValue(self, "_sparklesPSMainModule"));
-    RET_V_UNLESS(il2cpp_utils::SetPropertyValue(sparkleModule, "maxParticles", INT_MAX));
+    Il2CppObject* explosionPS = RET_V_UNLESS(il2cpp_utils::GetFieldValue(self, "_explosionPS"));
+    SetMaxParticlesAndLifetime(explosionPS, ModConfig::Config.explosionParticleLifetime);
 
 
     // Rainbow particles

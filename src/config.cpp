@@ -19,10 +19,6 @@ std::optional<bool> getBool(rapidjson::Value& obj, std::string_view fieldName) {
     GET(obj, fieldName, GetBool);
 }
 
-
-
-
-
 bool ModConfig::loadConfig()
 {
     getConfig().Load();	
